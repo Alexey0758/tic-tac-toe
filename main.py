@@ -1,3 +1,6 @@
+"""Крестики-нолики. Запуск: python main.py"""
+
+
 def show_board(board):
     print()
     for row in range(3):
@@ -24,11 +27,13 @@ def read_move(board, player):
 
 def play_game():
     board = [" "] * 9
+    player = "X"
     show_board(board)
-    index = read_move(board, "X")
-    board[index] = "X"
-    show_board(board)
-    print("Проверка ввода завершена. Остальные правила добавим в следующих ветках.")
+    for _ in range(9):
+        index = read_move(board, player)
+        board[index] = player
+        show_board(board)
+        player = "O" if player == "X" else "X"
 
 
 if __name__ == "__main__":

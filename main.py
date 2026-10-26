@@ -1,6 +1,3 @@
-"""Крестики-нолики. Запуск: python main.py"""
-
-
 def show_board(board):
     print()
     for row in range(3):
@@ -34,6 +31,10 @@ def has_won(board, player):
     return any(all(board[index] == player for index in line) for line in lines)
 
 
+def is_draw(board):
+    return " " not in board
+
+
 def play_game():
     board = [" "] * 9
     player = "X"
@@ -44,6 +45,9 @@ def play_game():
         show_board(board)
         if has_won(board, player):
             print(f"Победил {player}!")
+            return
+        if is_draw(board):
+            print("Ничья!")
             return
         player = "O" if player == "X" else "X"
 

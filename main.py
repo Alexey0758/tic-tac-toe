@@ -25,6 +25,15 @@ def read_move(board, player):
         return index
 
 
+def has_won(board, player):
+    lines = (
+        (0, 1, 2), (3, 4, 5), (6, 7, 8),
+        (0, 3, 6), (1, 4, 7), (2, 5, 8),
+        (0, 4, 8), (2, 4, 6),
+    )
+    return any(all(board[index] == player for index in line) for line in lines)
+
+
 def play_game():
     board = [" "] * 9
     player = "X"
@@ -33,6 +42,9 @@ def play_game():
         index = read_move(board, player)
         board[index] = player
         show_board(board)
+        if has_won(board, player):
+            print(f"Победил {player}!")
+            return
         player = "O" if player == "X" else "X"
 
 

@@ -1,3 +1,6 @@
+"""Крестики-нолики. Запуск: python main.py"""
+
+
 def show_board(board):
     print()
     for row in range(3):

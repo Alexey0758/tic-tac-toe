@@ -52,5 +52,18 @@ def play_game():
         player = "O" if player == "X" else "X"
 
 
+def main():
+    while True:
+        play_game()
+        while True:
+            answer = input("Сыграть ещё раз? (д/н): ").strip().lower()
+            if answer in ("д", "да", "y", "yes"):
+                break
+            if answer in ("н", "нет", "n", "no"):
+                print("До встречи!")
+                return
+            print("Введи д или н.")
+
+
 if __name__ == "__main__":
-    play_game()
+    main()
